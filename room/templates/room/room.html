@@ -1,0 +1,12 @@
+{% extends "home/base.html" %}
+{% block content %}
+<hr>
+{% for item in rooms %}
+{{item.name}}-{{item.slug}}
+<a href="{% url 'rooms:detail' item.id %}">Join</a>
+<br>
+{% endfor %}
+
+{% endblock content %}<script>
+
+</script>
