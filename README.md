@@ -1,9 +1,7 @@
-# SIMPLE CRUD API WITH DJANGO REST FRAMEWORK
-[Django REST framework](http://www.django-rest-framework.org/) is a powerful and flexible toolkit for building Web APIs.
-
+# A simple backend system using DJANGO and DJANGO REST FRAMEWORK[Django REST framework](http://www.django-rest-framework.org/) is a powerful and flexible toolkit for building Web APIs.
 ## Requirements
-- Python 3.6
-- Django 3.1
+- Python 3.11
+- Django 5.1.4
 - Django REST Framework
 
 ## Installation
@@ -19,7 +17,6 @@ You can install all the required dependencies by running
 ```
 pip install -r requirements.txt
 ```
-
 ## Structure
 In a RESTful API, endpoints (URLs) define the structure of the API and how end users access data from our application using the HTTP methods - GET, POST, PUT, DELETE. Endpoints should be logically organized around _collections_ and _elements_, both of which are resources.
 
@@ -27,11 +24,29 @@ In our case, we have one single resource, `movies`, so we will use the following
 
 Endpoint |HTTP Method | CRUD Method | Result
 -- | -- |-- |--
-`movies` | GET | READ | Get all movies
-`movies/:id` | GET | READ | Get a single movie
-`movies`| POST | CREATE | Create a new movie
-`movies/:id` | PUT | UPDATE | Update a movie
-`movies/:id` | DELETE | DELETE | Delete a movie
+`customers/` | GET | READ | Get all customers
+`customers/:id` | GET | READ | Get a single customer
+`customers/`| POST | CREATE | Create a new customer
+`customers/:id` | PUT | UPDATE | Update a customer
+`customers/:id` | DELETE | DELETE | Delete a customer
+-- | -- |-- |--
+`products/` | GET | READ | Get all products
+`products/:id` | GET | READ | Get a single product
+`products/`| POST | CREATE | Create a new product
+`products/:id` | PUT | UPDATE | Update a product
+`products/:id` | DELETE | DELETE | Delete a product
+-- | -- |-- |--
+`employees/` | GET | READ | Get all employees
+`employees/:id` | GET | READ | Get a single employee
+`employees/`| POST | CREATE | Create a new employee
+`employees/:id` | PUT | UPDATE | Update a employee
+`employees/:id` | DELETE | DELETE | Delete a employee
+-- | -- |-- |--
+`task-board/` | GET | READ | Get all tasks
+`task-board/:id` | GET | READ | Get a single task
+`task-board/`| POST | CREATE | Create a new task
+`task-board/:id` | PUT | UPDATE | Update a task
+`task-board/:id` | DELETE | DELETE | Delete a task
 
 ## Use
 We can test the API using [curl](https://curl.haxx.se/) or [httpie](https://github.com/jakubroztocil/httpie#installation), or we can use [Postman](https://www.postman.com/)
