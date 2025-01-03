@@ -433,18 +433,23 @@ http:DELETE \http://127.0.0.1:8000/crm/task-board/[id]/
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 ```
 ### Filters
-The API supports filtering, you can filter by the attributes of a movie like this
+#### The API task-board filtering, you can filter by the attributes of a task-board like this
+Filter base on assigned_to field and status field
 ```
-http http://127.0.0.1:8000/api/v1/movies/?title="AntMan" "Authorization: Bearer {YOUR_TOKEN}"
-http http://127.0.0.1:8000/api/v1/movies/?year=2020 "Authorization: Bearer {YOUR_TOKEN}"
-http http://127.0.0.1:8000/api/v1/movies/?year__gt=2019&year__lt=2022 "Authorization: Bearer {YOUR_TOKEN}"
-http http://127.0.0.1:8000/api/v1/movies/?genre="Action" "Authorization: Bearer {YOUR_TOKEN}"
-http http://127.0.0.1:8000/api/v1/movies/?creator__username="myUsername" "Authorization: Bearer {YOUR_TOKEN}"
+url:GET http://127.0.0.1:8000/crm/task-board/?assigned_to=[user_id]&?status=open
+response:
+[
+  {
+    "id": 1,
+    "name": "testtask",
+    "description": "test",
+    "position": 0,
+    "due_date": "2025-01-03",
+    "status": "Open",
+    "column": 1,
+    "assigned_to": 1
+  },...
+]
 ```
-
-You can also combine multiples filters like so
-```
-http http://127.0.0.1:8000/api/v1/movies/?title="AntMan"&year=2020 "Authorization: Bearer {YOUR_TOKEN}"
-http http://127.0.0.1:8000/api/v1/movies/?year__gt=2019&year__lt=2022&genre="Action" "Authorization: Bearer {YOUR_TOKEN}"
 ```
 
