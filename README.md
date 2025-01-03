@@ -50,14 +50,7 @@ Endpoint |HTTP Method | CRUD Method | Result
 `task-board/:id` | DELETE | DELETE | Delete a task
 
 ## Use
-We can test the API using [curl](https://curl.haxx.se/) or [httpie](https://github.com/jakubroztocil/httpie#installation), or we can use [Postman](https://www.postman.com/)
-
-Httpie is a user-friendly http client that's written in Python. Let's try and install that.
-
-You can install httpie using pip:
-```
-pip install httpie
-```
+We can test the API using [Postman](https://www.postman.com/)
 
 First, we have to start up Django's development server.
 ```
