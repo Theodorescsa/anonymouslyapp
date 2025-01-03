@@ -207,7 +207,231 @@ response:
 http:DELETE \http://127.0.0.1:8000/crm/customers/[id]/
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 ```
-
+#### Get all products
+```
+url:GET http://127.0.0.1:8000/crm/products/
+response:
+[
+  {
+    "id": 1,
+    "name": "testproduct",
+    "description": "test",
+    "price": "1.00",
+    "stock": 1
+  }
+]
+```
+#### Get a single product
+```
+url:GET http://127.0.0.1:8000/crm/products/[id]/
+response:
+{
+  "id": 1,
+  "name": "testproduct",
+  "description": "test",
+  "price": "1.00",
+  "stock": 1
+}
+```
+#### Create a new product
+```
+url:POST http://127.0.0.1:8000/crm/products/
+params:
+{
+  "name": "string",
+  "description": "string",
+  "price": "246",
+  "stock": 4294967295
+}
+response:
+{
+  "id": 2,
+  "name": "string",
+  "description": "string",
+  "price": "246.00",
+  "stock": 4294967295
+}
+```
+#### Full update a product
+```
+url:PUT http://127.0.0.1:8000/crm/products/[id]/
+params:
+{
+  "name": "testproduct2",
+  "description": "test",
+  "price": "1.00",
+  "stock": 1
+}
+response:
+{
+  "id": 1,
+  "name": "testproduct2",
+  "description": "test",
+  "price": "1.00",
+  "stock": 1
+}
+```
+#### Delete a product
+```
+http:DELETE \http://127.0.0.1:8000/crm/products/[id]/
+----------------------------------------------------------------------------------------------------------------------------------------------------
+```
+#### Get all employees
+```
+url:GET http://127.0.0.1:8000/crm/employees/
+response:
+[
+  {
+    "id": 1,
+    "name": "testemployee",
+    "email": "test2@gmail.com",
+    "phone": "11111111111111",
+    "position": "test"
+  }
+]
+```
+#### Get a single employees
+```
+url:GET http://127.0.0.1:8000/crm/employees/[id]/
+response:
+{
+  "id": 1,
+  "name": "testemployee",
+  "email": "test2@gmail.com",
+  "phone": "11111111111111",
+  "position": "test"
+}
+```
+#### Create a new employees
+```
+url:POST http://127.0.0.1:8000/crm/employees/
+params:
+{
+  "name": "strieng",
+  "email": "user@exampele.com",
+  "phone": "string",
+  "position": "string"
+}
+response:
+{
+  "id": 3,
+  "name": "strieng",
+  "email": "user@exampele.com",
+  "phone": "string",
+  "position": "string"
+}
+```
+#### Full update a employees
+```
+url:PUT http://127.0.0.1:8000/crm/employees/[id]/
+params:
+{
+  "name": "strieng3",
+  "email": "user@exampele.com",
+  "phone": "string",
+  "position": "string"
+}
+response:
+{
+  "id": 3,
+  "name": "strieng3",
+  "email": "user@exampele.com",
+  "phone": "string",
+  "position": "string"
+}
+```
+#### Delete a employees
+```
+http:DELETE \http://127.0.0.1:8000/crm/employees/[id]/
+----------------------------------------------------------------------------------------------------------------------------------------------------
+```
+#### Get all tasks-board
+```
+url:GET http://127.0.0.1:8000/crm/task-board/
+response:
+[
+  {
+    "id": 1,
+    "name": "testtask",
+    "description": "test",
+    "position": 0,
+    "due_date": "2025-01-03",
+    "status": "Open",
+    "column": 1,
+    "assigned_to": 1
+  }
+]
+```
+#### Get a single task-board
+```
+url:GET http://127.0.0.1:8000/crm/task-board/[id]/
+response:
+{
+  "id": 1,
+  "name": "testtask",
+  "description": "test",
+  "position": 0,
+  "due_date": "2025-01-03",
+  "status": "Open",
+  "column": 1,
+  "assigned_to": 1
+}
+```
+#### Create a new task-board
+```
+url:POST http://127.0.0.1:8000/crm/task-board/
+params:
+{
+  "name": "string",
+  "description": "string",
+  "position": 4294967295,
+  "due_date": "2025-01-03",
+  "status": "Open",
+  "column": 1,
+  "assigned_to": 1
+}
+response:
+{
+  "id": 2,
+  "name": "string",
+  "description": "string",
+  "position": 4294967295,
+  "due_date": "2025-01-03",
+  "status": "Open",
+  "column": 1,
+  "assigned_to": 1
+}
+```
+#### Full update a task-board
+```
+url:PUT http://127.0.0.1:8000/crm/task-board/[id]/
+params:
+{
+  "name": "string2",
+  "description": "string",
+  "position": 4294967295,
+  "due_date": "2025-01-03",
+  "status": "Open",
+  "column": 1,
+  "assigned_to": 1
+}
+response:
+{
+  "id": 2,
+  "name": "string2",
+  "description": "string",
+  "position": 4294967295,
+  "due_date": "2025-01-03",
+  "status": "Open",
+  "column": 1,
+  "assigned_to": 1
+}
+```
+#### Delete a task-board
+```
+http:DELETE \http://127.0.0.1:8000/crm/task-board/[id]/
+----------------------------------------------------------------------------------------------------------------------------------------------------
+```
 ### Filters
 The API supports filtering, you can filter by the attributes of a movie like this
 ```
