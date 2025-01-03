@@ -25,29 +25,32 @@ In our case, we have one single resource, `movies`, so we will use the following
 
 Endpoint |HTTP Method | CRUD Method | Result
 -- | -- |-- |--
-`customers/` | GET | READ | Get all customers
-`customers/:id` | GET | READ | Get a single customer
-`customers/`| POST | CREATE | Create a new customer
-`customers/:id` | PUT | UPDATE | Update a customer
-`customers/:id` | DELETE | DELETE | Delete a customer
+`/authentication/signin/` | POST | - | Status, Accesstoken and refreshtoken
+`/authentication/signup/` | POST | - | Status
 -- | -- |-- |--
-`products/` | GET | READ | Get all products
-`products/:id` | GET | READ | Get a single product
-`products/`| POST | CREATE | Create a new product
-`products/:id` | PUT | UPDATE | Update a product
-`products/:id` | DELETE | DELETE | Delete a product
+`/crm/customers/` | GET | READ | Get all customers
+`/crm/customers/:id/` | GET | READ | Get a single customer
+`/crm/customers/`| POST | CREATE | Create a new customer
+`/crm/ustomers/:id/` | PUT | UPDATE | Update a customer
+`/crm/customers/:id/` | DELETE | DELETE | Delete a customer
 -- | -- |-- |--
-`employees/` | GET | READ | Get all employees
-`employees/:id` | GET | READ | Get a single employee
-`employees/`| POST | CREATE | Create a new employee
-`employees/:id` | PUT | UPDATE | Update a employee
-`employees/:id` | DELETE | DELETE | Delete a employee
+`/crm/products/` | GET | READ | Get all products
+`/crm/products/:id/` | GET | READ | Get a single product
+`/crm/products/`| POST | CREATE | Create a new product
+`/crm/products/:id/` | PUT | UPDATE | Update a product
+`/crm/products/:id/` | DELETE | DELETE | Delete a product
 -- | -- |-- |--
-`task-board/` | GET | READ | Get all tasks
-`task-board/:id` | GET | READ | Get a single task
-`task-board/`| POST | CREATE | Create a new task
-`task-board/:id` | PUT | UPDATE | Update a task
-`task-board/:id` | DELETE | DELETE | Delete a task
+`/crm/employees/` | GET | READ | Get all employees
+`/crm/employees/:id/` | GET | READ | Get a single employee
+`/crm/employees/`| POST | CREATE | Create a new employee
+`/crm/employees/:id/` | PUT | UPDATE | Update a employee
+`/crm/employees/:id/` | DELETE | DELETE | Delete a employee
+-- | -- |-- |--
+`/crm/task-board/` | GET | READ | Get all tasks
+`/crm/task-board/:id/` | GET | READ | Get a single task
+`/crm/task-board/`| POST | CREATE | Create a new task
+`/crm/task-board/:id/` | PUT | UPDATE | Update a task
+`/crm/task-board/:id/` | DELETE | DELETE | Delete a task
 
 ## Use
 We can test the API using [Postman](https://www.postman.com/)
