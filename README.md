@@ -1,6 +1,7 @@
 # A simple backend system using DJANGO and DJANGO REST FRAMEWORK
 [Django REST framework](http://www.django-rest-framework.org/) is a powerful and flexible toolkit for building Web APIs.
 ## Server url: http://43.203.217.22:8000/
+## Swagger API documentation for the CRM system: http://43.203.217.22:8000/api-doc/api/schema/swagger-ui/
 ## Deployments & tools
 - AWS
 - docker
@@ -135,6 +136,40 @@ The API has some restrictions:
 -   Only authenticated users may use these CRUD api
 
 ### Request using postman
+#### Authentication
+#### Signin
+```
+url:POST http://127.0.0.1:8000/authentication/signin/
+params:
+{
+  "username_login": "testuser",
+  "password_login": "testpassword",
+  "next": "/dashboard/"
+}
+response:
+{
+  "success": true,
+  "next_page": "/dashboard/",
+  "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczNTk4MjMyNCwiaWF0IjoxNzM1ODk1OTI0LCJqdGkiOiIyMTU5ZWZmY2ZlZTc0NWIyYmQ1ODkzY2Q0NDgxMDUyNCIsInVzZXJfaWQiOjF9.MMpjtJkal2nvp5zgeNn8UZHM7drc6-wlvqiuo-kyD_s",
+  "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQxMDc5OTI0LCJpYXQiOjE3MzU4OTU5MjQsImp0aSI6ImE2ZjE0NmQ3MGVlYTQ5ODBiZTlmMzZhZjg1NWFmOWRhIiwidXNlcl9pZCI6MX0.BzAiRsCmKpjxaiDlTD8byHHzqaZ6cGJI_W-rKr4zGkQ"
+}
+```
+#### Signup
+```
+url:POST http://127.0.0.1:8000/authentication/signup/
+params:
+{
+  "username": "testuser",
+  "email": "user@gmail.com",
+  "password1": "testpassword",
+  "password2": "testpassword"
+}
+response:
+{
+  "success": true,
+  "message": "Sign up successful!"
+}
+```
 #### All these api must have Authorization: Bearer {YOUR_TOKEN}
 #### Get all customers
 ```
