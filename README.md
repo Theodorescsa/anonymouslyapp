@@ -20,9 +20,6 @@ pip install -r requirements.txt
 ```
 ## Structure
 In a RESTful API, endpoints (URLs) define the structure of the API and how end users access data from our application using the HTTP methods - GET, POST, PUT, DELETE. Endpoints should be logically organized around _collections_ and _elements_, both of which are resources.
-
-In our case, we have one single resource, `movies`, so we will use the following URLS - `/movies/` and `/movies/<id>` for collections and elements, respectively:
-
 Endpoint |HTTP Method | CRUD Method | Result
 -- | -- |-- |--
 `/authentication/signin/` | POST | - | Status, Accesstoken and refreshtoken
@@ -53,7 +50,7 @@ Endpoint |HTTP Method | CRUD Method | Result
 `/crm/task-board/:id/` | DELETE | DELETE | Delete a task
 
 ## Use
-We can test the API using [Postman](https://www.postman.com/)
+We can test the API using [Postman](https://www.postman.com/) or click to swagger doc link: http://43.203.217.22:8000/api-doc/api/schema/swagger-ui
 
 First, we have to start up Django's development server.
 ```
@@ -61,7 +58,7 @@ python manage.py runserver
 ```
 Only authenticated users can use the API services, for that reason if we try this:
 ```
-http  http://127.0.0.1:8000/api/v1/movies/
+http  http://127.0.0.1:8000/crm/customers/
 ```
 we get:
 ```
@@ -71,11 +68,18 @@ we get:
 ```
 Instead, if we try to access with credentials:
 ```
-http http://127.0.0.1:8000/api/v1/movies/3 "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2MjA4Mjk1LCJqdGkiOiI4NGNhZmMzMmFiZDA0MDQ2YjZhMzFhZjJjMmRiNjUyYyIsInVzZXJfaWQiOjJ9.NJrs-sXnghAwcMsIWyCvE2RuGcQ3Hiu5p3vBmLkHSvM"
+http http://127.0.0.1:8000/crm/customers/1/ "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQxMDcyNDE0LCJpYXQiOjE3MzU4ODg0MTQsImp0aSI6ImU2YTQ3MDI4ZDk2MzRmYmQ5MGEzZjY3ZmRjZDkwYjBmIiwidXNlcl9pZCI6MX0.a6MQjjgJxfpIfY_UzUhJkuiWewfpro60EXziUDRQi9M"
 ```
-we get the movie with id = 3
+we get the movie with id = 1
 ```
-{  "title":  "Avengers",  "genre":  "Superheroes",  "year":  2012,  "creator":  "admin"  }
+{
+  "id": 1,
+  "name": "testuser",
+  "email": "test@gmail.com",
+  "phone": "9999999999999",
+  "address": "test",
+  "notes": "test"
+}
 ```
 
 ## Create users and Tokens
