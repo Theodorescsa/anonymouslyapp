@@ -5,7 +5,8 @@
 - Django 5.1.4
 - Django REST Framework
 
-## Installation
+## Installation and Set up Project
+1. Running the project on a local environment
 After you cloned the repository, you want to create a virtual environment, so you have a clean python installation.
 You can do this by running the command
 ```
@@ -17,6 +18,13 @@ After this, it is necessary to activate the virtual environment, you can get mor
 You can install all the required dependencies by running
 ```
 pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+```
+2. Running the project using Docker
+Docker provides a modern approach, allowing you to run the project inside an isolated container environment
+```
+docker compose up -d --build
 ```
 ## Structure
 In a RESTful API, endpoints (URLs) define the structure of the API and how end users access data from our application using the HTTP methods - GET, POST, PUT, DELETE. Endpoints should be logically organized around _collections_ and _elements_, both of which are resources.
@@ -123,27 +131,81 @@ The API has some restrictions:
 -   Only authenticated users may use these CRUD api
 
 ### Request using postman
+#### All these api must have Authorization: Bearer {YOUR_TOKEN}
+#### Get all customers
 ```
-Get all movies
-http http://127.0.0.1:8000/api/v1/movies/ "Authorization: Bearer {YOUR_TOKEN}" 
-Get a single movie
-http GET http://127.0.0.1:8000/api/v1/movies/{movie_id}/ "Authorization: Bearer {YOUR_TOKEN}" 
-Create a new movie
-http POST http://127.0.0.1:8000/api/v1/movies/ "Authorization: Bearer {YOUR_TOKEN}" title="Ant Man and The Wasp" genre="Action" year=2018 
-Full update a movie
-http PUT http://127.0.0.1:8000/api/v1/movies/{movie_id}/ "Authorization: Bearer {YOUR_TOKEN}" title="AntMan and The Wasp" genre="Action" year=2018
-Partial update a movie
-http PATCH http://127.0.0.1:8000/api/v1/movies/{movie_id}/ "Authorization: Bearer {YOUR_TOKEN}" title="AntMan and The Wasp" 
-Delete a movie
-http DELETE http://127.0.0.1:8000/api/v1/movies/{movie_id}/ "Authorization: Bearer {YOUR_TOKEN}"
+url:GET http://127.0.0.1:8000/crm/customers/
+response:
+[
+  {
+    "id": 1,
+    "name": "testuser",
+    "email": "test@gmail.com",
+    "phone": "9999999999999",
+    "address": "test",
+    "notes": "test"
+  }
+]
 ```
-
-### Pagination
-The API supports pagination, by default responses have a page_size=10 but if you want change that you can pass through params page_size={your_page_size_number}
+#### Get a single customer
 ```
-http http://127.0.0.1:8000/api/v1/movies/?page=1 "Authorization: Bearer {YOUR_TOKEN}"
-http http://127.0.0.1:8000/api/v1/movies/?page=3 "Authorization: Bearer {YOUR_TOKEN}"
-http http://127.0.0.1:8000/api/v1/movies/?page=3&page_size=15 "Authorization: Bearer {YOUR_TOKEN}"
+url:GET http://127.0.0.1:8000/crm/customers/[id]/
+response:
+{
+  "id": 1,
+  "name": "testuser",
+  "email": "test@gmail.com",
+  "phone": "9999999999999",
+  "address": "test",
+  "notes": "test"
+}
+```
+#### Create a new customer
+```
+url:POST http://127.0.0.1:8000/crm/customers/
+params:
+{
+  "name": "string",
+  "email": "user@example.com",
+  "phone": "string",
+  "address": "string",
+  "notes": "string"
+}
+response:
+{
+  "id": 0,
+  "name": "string",
+  "email": "user@example.com",
+  "phone": "string",
+  "address": "string",
+  "notes": "string"
+}
+```
+#### Full update a customer
+```
+url:PUT http://127.0.0.1:8000/crm/customers/[id]/
+params:
+{
+  "name": "testuser2",
+  "email": "test@gmail.com",
+  "phone": "9999999999999",
+  "address": "test",
+  "notes": "test"
+}
+response:
+{
+  "id": 1,
+  "name": "testuser2",
+  "email": "test@gmail.com",
+  "phone": "9999999999999",
+  "address": "test",
+  "notes": "test"
+}
+```
+#### Delete a customer
+```
+http:DELETE \http://127.0.0.1:8000/crm/customers/[id]/
+----------------------------------------------------------------------------------------------------------------------------------------------------
 ```
 
 ### Filters
