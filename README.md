@@ -86,44 +86,43 @@ we get the movie with id = 1
 
 First we need to create a user, so we can log in
 ```
-http POST http://127.0.0.1:8000/api/v1/auth/register/ email="email@email.com" username="USERNAME" password1="PASSWORD" password2="PASSWORD"
+http POST http://43.203.217.22:8000/authentication/signup/
+params:
+{
+  "username": "testuser",
+  "email": "user@gmail.com",
+  "password1": "testpassword",
+  "password2": "testpassword"
+}
 ```
 
-After we create an account we can use those credentials to get a token
+After we create an account we can login to get a token
 
 To get a token first we need to request
 ```
-http http://127.0.0.1:8000/api/v1/auth/token/ username="username" password="password"
+http POST http://43.203.217.22:8000/authentication/signin/
+params:
+{
+  "username_login": "admin",
+  "password_login": "admin",
+  "next": "/dashboard/"
+}
 ```
 after that, we get the token
 ```
 {
-    "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYxNjI5MjMyMSwianRpIjoiNGNkODA3YTlkMmMxNDA2NWFhMzNhYzMxOTgyMzhkZTgiLCJ1c2VyX2lkIjozfQ.hP1wPOPvaPo2DYTC9M1AuOSogdRL_mGP30CHsbpf4zA",
-    "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2MjA2MjIxLCJqdGkiOiJjNTNlNThmYjE4N2Q0YWY2YTE5MGNiMzhlNjU5ZmI0NSIsInVzZXJfaWQiOjN9.Csz-SgXoItUbT3RgB3zXhjA2DAv77hpYjqlgEMNAHps"
+  "success": true,
+  "next_page": "/dashboard/",
+  "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczNTk3NDgxNCwiaWF0IjoxNzM1ODg4NDE0LCJqdGkiOiIwNGVmODBmMzMxMGE0YmJmYjZjZWNhNjBjOTc3ZWQ5MiIsInVzZXJfaWQiOjF9.KzIQVq9UX7DVxemoQK4gv2NVJHVe6OirlJ9NuXTmr9w",
+  "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQxMDcyNDE0LCJpYXQiOjE3MzU4ODg0MTQsImp0aSI6ImU2YTQ3MDI4ZDk2MzRmYmQ5MGEzZjY3ZmRjZDkwYjBmIiwidXNlcl9pZCI6MX0.a6MQjjgJxfpIfY_UzUhJkuiWewfpro60EXziUDRQi9M"
 }
 ```
 We got two tokens, the access token will be used to authenticated all the requests we need to make, this access token will expire after some time.
-We can use the refresh token to request a need access token.
-
-requesting new access token
-```
-http http://127.0.0.1:8000/api/v1/auth/token/refresh/ refresh="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYxNjI5MjMyMSwianRpIjoiNGNkODA3YTlkMmMxNDA2NWFhMzNhYzMxOTgyMzhkZTgiLCJ1c2VyX2lkIjozfQ.hP1wPOPvaPo2DYTC9M1AuOSogdRL_mGP30CHsbpf4zA"
-```
-and we will get a new access token
-```
-{
-    "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE2MjA4Mjk1LCJqdGkiOiI4NGNhZmMzMmFiZDA0MDQ2YjZhMzFhZjJjMmRiNjUyYyIsInVzZXJfaWQiOjJ9.NJrs-sXnghAwcMsIWyCvE2RuGcQ3Hiu5p3vBmLkHSvM"
-}
-```
-
 
 The API has some restrictions:
--   The movies are always associated with a creator (user who created it).
--   Only authenticated users may create and see movies.
--   Only the creator of a movie may update or delete it.
--   The API doesn't allow unauthenticated requests.
+-   Only authenticated users may use these CRUD api
 
-### Commands
+### Request using postman
 ```
 Get all movies
 http http://127.0.0.1:8000/api/v1/movies/ "Authorization: Bearer {YOUR_TOKEN}" 
